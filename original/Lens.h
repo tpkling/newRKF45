@@ -16,21 +16,14 @@ public:
     double getUdx(double, double, double, double); //Getter for X derivative of potential at a point with a step
     double getUdy(double, double, double, double); //Getter for Y derivative of potential at a point with a step
     double getUdz(double, double, double, double); //Getter for Z derivative of potential at a point with a step
-    double getUdxx(double, double, double, double); //Getter for 2 X derivatives of potential at a point with a step
-    double getUdyy(double, double, double, double); //Getter for 2 Y derivatives of potential at a point with a step
-    double getUdzz(double, double, double, double); //Getter for 2 Z derivatives of potential at a point with a step
-    double getUdxy(double, double, double, double); //Getter for X and Y 2nd derivatives of potential at a point with a step
-    double getUdxz(double, double, double, double); //Getter for Z and Z 2nd derivatives of potential at a point with a step
-    double getUdyz(double, double, double, double); //Getter for Y and Z 2ndderivatives of potential at a point with a step
     void getPos();
 private:
-    double _xp;  // X center
-    double _yp;  // Y center
-    double _zp;  // Z center
-    double _GM;  // const
-    double _rs;  // const
-    double _c;   // const
-    double _av;  // const
+    double _xp;  //X center
+    double _yp;  //Y center
+    double _zp;  //Z center
+    double _GM;  //const
+    double _rs;  //const
+    double _c;  //const
 
 };
 

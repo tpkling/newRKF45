@@ -19,13 +19,6 @@ public:
     virtual double getUdx(double, double, double, double)=0;
     virtual double getUdy(double, double, double, double)=0;
     virtual double getUdz(double, double, double, double)=0;
-    virtual double getUdxx(double, double, double, double)=0;
-    virtual double getUdyy(double, double, double, double)=0;
-    virtual double getUdzz(double, double, double, double)=0;
-    virtual double getUdxy(double, double, double, double)=0;
-    virtual double getUdxz(double, double, double, double)=0;
-    virtual double getUdyz(double, double, double, double)=0;
-    
     virtual void getPos()=0;
 
 };
