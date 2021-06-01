@@ -88,8 +88,8 @@ lightRay::lightRay() {
     coords.Xy_  = 0.0;
     coords.Xz_  = 0.0;
     coords.VXt_ = 0.0;
-    coords.VXy_ = 0.579404e-4;
-    coords.VXx_ = 0.545653e-4; // much smaller than theta, probably good
+    coords.VXy_ = 0.18786816591e-3; //close, not correct yet. Somthing weird is going on... - Peterson
+    coords.VXx_ = 0.5418211e-4; // much smaller than theta, probably good
     coords.VXz_ = 0.0;
 }
 lightRay::lightRay(double t, double x, double y, double z, double vt, double vx, double vy, double vz) {
@@ -137,31 +137,32 @@ double lightRay::computeVzdot() { //computes vz dot
 }
 
 // also add function for geodesic deviation equation
+// Fixed per discussion on Mathematica code notation - Peterson
 
 double lightRay::computeVXtdot(){ // computes the acc in the t component of the geodesic deviation vector
     
-    return R0301_*(vzv_*vtv_*VXxv_) + R0302_*(vzv_*vtv_*VXyv_) + R0303_*(-vzv_*vzv_*VXtv_ + vzv_*vtv_*VXzv_) 
-            + R0331_*(vzv_*vzv_*VXxv_) + R0332_*(vzv_*vzv_*VXyv_); 
+    return R0301_*(vzv_*vtv_*Xxv_) + R0302_*(vzv_*vtv_*Xyv_) + R0303_*(-vzv_*vzv_*Xtv_ + vzv_*vtv_*Xzv_) 
+            + R0331_*(vzv_*vzv_*Xxv_) + R0332_*(vzv_*vzv_*Xyv_); 
 }
 
 double lightRay::computeVXxdot(){ // computes the acc in the x component of the geodesic deviation vector
     
-    return R1001_*(vtv_*vtv_*VXxv_) + R1331_*(vzv_*vzv_*VXxv_) + R1031_*(vtv_*vzv_*VXxv_)
-            + R1002_*(vtv_*vtv_*VXyv_) + R1030_*(vtv_*vzv_*VXtv_ - vtv_*vtv_*VXzv_) + R1301_*(vzv_*vtv_*VXxv_)
-            + R1330_*(vzv_*vzv_*VXtv_ - vzv_*vtv_*VXzv_) + R1332_*(vzv_*vzv_*VXyv_);
+    return R1001_*(vtv_*vtv_*Xxv_) + R1331_*(vzv_*vzv_*Xxv_) + R1031_*(vtv_*vzv_*Xxv_)
+            + R1002_*(vtv_*vtv_*Xyv_) + R1030_*(vtv_*vzv_*Xtv_ - vtv_*vtv_*Xzv_) + R1301_*(vzv_*vtv_*Xxv_)
+            + R1330_*(vzv_*vzv_*Xtv_ - vzv_*vtv_*Xzv_) + R1332_*(vzv_*vzv_*Xyv_);
 }
 
 double lightRay::computeVXydot(){ // computes the acc in the y component of the geodesic deviation vector
     
-    return R2002_*(vtv_*vtv_*VXyv_) + R2332_*(vzv_*vzv_*VXyv_) + R2032_*(vtv_*vzv_*VXyv_)
-            + R2001_*(vtv_*vtv_*VXxv_) + R2030_*(vtv_*vzv_*VXtv_ - vtv_*vtv_*VXzv_) + R2302_*(vzv_*vtv_*VXyv_)
-            + R2330_*(vzv_*vzv_*VXtv_ - vzv_*vtv_*VXzv_) + R2331_*(vzv_*vzv_*VXxv_); 
+    return R2002_*(vtv_*vtv_*Xyv_) + R2332_*(vzv_*vzv_*Xyv_) + R2032_*(vtv_*vzv_*Xyv_)
+            + R2001_*(vtv_*vtv_*Xxv_) + R2030_*(vtv_*vzv_*Xtv_ - vtv_*vtv_*Xzv_) + R2302_*(vzv_*vtv_*Xyv_)
+            + R2330_*(vzv_*vzv_*Xtv_ - vzv_*vtv_*Xzv_) + R2331_*(vzv_*vzv_*Xxv_); 
 }
 
 double lightRay::computeVXzdot(){ // computes the acc in the z component of the geodesic deviation vector
     
-    return R3030_*(vtv_*vzv_*VXtv_ - vtv_*vtv_*VXzv_) + R3032_*(vtv_*vzv_*VXyv_) + R3031_*(vtv_*vzv_*VXxv_)
-            + R3002_*(vtv_*vtv_*VXyv_) + R3001_*(vtv_*vtv_*VXxv_);
+    return R3030_*(vtv_*vzv_*Xtv_ - vtv_*vtv_*Xzv_) + R3032_*(vtv_*vzv_*Xyv_) + R3031_*(vtv_*vzv_*Xxv_)
+            + R3002_*(vtv_*vtv_*Xyv_) + R3001_*(vtv_*vtv_*Xxv_);
 }
 
 
